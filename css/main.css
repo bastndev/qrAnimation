@@ -1,0 +1,92 @@
+*,*::before, *::after {box-sizing: border-box;}
+
+html, body{
+    margin: 0;
+    height: 100%;
+}
+body{
+    background-color: #1e1f23;
+    color: white;
+    font-family:sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.scan{
+    position: relative;
+
+}
+h3{
+    text-align: center;
+    font-size: 10px;
+    opacity: 80%;
+}
+/*Qr - image*/
+.scan .qrcode
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: url(../assets/img/q1.png);
+    background-size: 200px;
+}
+.scan .qrcode::before
+{    
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url(../assets/img/q2.png);
+    background-size: 200px;
+    overflow: hidden;
+    animation: animate 4s ease-in-out infinite;
+}
+/*Qr - Animation*/
+@keyframes animate {
+    0%,100%
+    {
+        height: 20px;
+    }
+    50%
+    {
+        height:  calc(100% - 20px);
+    }
+}
+.scan .qrcode::after
+{
+    content: '  ';
+    position:absolute;
+    inset: 20px;
+    width: calc(100% - 40px);
+    height:2px ;
+    background: rgb(255, 98, 0);
+    filter: drop-shadow(0 0 20px rgb(222, 104, 1)) drop-shadow(0 0 15px rgb(255, 119, 0));
+    animation: animateLine 4s ease-in-out infinite;
+}
+@keyframes animateLine {
+    0%{
+        top:20px
+    }
+    50%{
+        top: calc(100% - 20px);
+    }
+}
+.framework{
+    position: absolute;
+    inset:0;
+    background: url(../assets/img/marco.png);
+    background-size: 200px;
+    background-repeat: no-repeat;
+    animation: parpadeo 0.7s steps(1) infinite;    
+}
+@keyframes parpadeo{
+    0%, 100%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 40%;
+    }
+}
+
